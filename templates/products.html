@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Products{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <div id="products-row" class="row gy-4">
+        <!-- Products will be injected here -->
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/products.js') }}"></script>
+{% endblock %}

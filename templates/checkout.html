@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %}Checkout{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Checkout</h1>
+    <div class="row">
+        <div class="col-md-7">
+            <form method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <h4>Shipping Details</h4>
+                <div class="mb-3">
+                    {{ form.name.label(class="form-label") }}
+                    {{ form.name(class="form-control", placeholder="Full Name") }}
+                    {% for error in form.name.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+                </div>
+                <div class="mb-3">
+                    {{ form.address.label(class="form-label") }}
+                    {{ form.address(class="form-control", placeholder="Address") }}
+                    {% for error in form.address.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+                </div>
+                <div class="mb-3">
+                    {{ form.city.label(class="form-label") }}
+                    {{ form.city(class="form-control", placeholder="City") }}
+                    {% for error in form.city.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+                </div>
+                <div class="mb-3">
+                    {{ form.zip.label(class="form-label") }}
+                    {{ form.zip(class="form-control", placeholder="ZIP Code") }}
+                    {% for error in form.zip.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+                </div>
+                <div class="mb-3">
+                    {{ form.phone.label(class="form-label") }}
+                    {{ form.phone(class="form-control", placeholder="Phone Number") }}
+                    {% for error in form.phone.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+                </div>
+                {{ form.submit(class="btn btn-success btn-lg mt-2", value="Proceed") }}
+            </form>
+        </div>
+        <div class="col-md-5">
+            <h4>Your Order</h4>
+            <div id="order-summary">
+                {% if cart_items %}
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th class="text-end">Qty</th>
+                            <th class="text-end">Price</th>
+                            <th class="text-end">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cart_items %}
+                        <tr>
+                            <td>{{ item.product.name }}</td>
+                            <td class="text-end">{{ item.quantity }}</td>
+                            <td class="text-end">Rs.{{ '%.2f'|format(item.product.price) }}</td>
+                            <td class="text-end">Rs.{{ '%.2f'|format(item.product.price * item.quantity) }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="text-end fw-bold">Total:</td>
+                            <td class="text-end fw-bold">Rs.{{ '%.2f'|format(total) }}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                {% else %}
+                <div class="alert alert-info">Your cart is empty.</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+// Optionally, JS for order summary can be added here.
+document.addEventListener('DOMContentLoaded', function() {
+    // You can fetch cart items and display summary here if needed.
+});
+</script>
+{% endblock %}

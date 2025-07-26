@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Cart{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h1>Your Cart</h1>
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead>
+                <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items-container">
+                <tr>
+                    <td colspan="5" class="text-center">Loading...</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" class="text-end fw-bold">Total:</td>
+                    <td id="cart-total" class="fw-bold">Rs.0.00</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="text-end mt-4">
+        <a href="/checkout" class="btn btn-success btn-lg">Proceed to Checkout</a>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/cart.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,46 @@
+/* Custom E-Commerce Color Palette */
+:root {
+    --pink-light: #FFB2E6;
+    --pink: #F7AEF8;
+    --purple-light: #E382F9;
+    --purple-medium: #B388EB;
+    --purple: #9A52FF;
+    --purple-dark: #8447FF;
+    --blue: #72DDF7;
+}
+
+body {
+    background-color: #fff;
+}
+
+.navbar {
+    background: linear-gradient(90deg, var(--purple), var(--purple-dark), var(--blue));
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: #fff !important;
+}
+
+.btn-primary {
+    background-color: var(--purple-dark);
+    border-color: var(--purple-dark);
+}
+
+.btn-primary:hover {
+    background-color: var(--purple);
+    border-color: var(--purple);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--purple-dark);
+}
+
+.card {
+    border-color: var(--purple-light);
+}
